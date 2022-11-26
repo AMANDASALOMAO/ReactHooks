@@ -62,6 +62,19 @@ useEffect(() => {
   console.log("Só roda ao incrementar o valor");
 }, [count]);
 
+// 3- ARRAY DE DEPENDÊNCIA VAZIO
+useEffect(() => {("Só executa uma vez");
+}, []);
+
+ // 4 - fetch com effect
+
+useEffect(() => {
+  fetch("url")
+  .then((res) => res.json())
+  .then ((json) => setUser(json));
+}, []);
+
+
   return (
     <div className="Effect2">
     <div>
@@ -74,10 +87,20 @@ useEffect(() => {
       <button onClick={() => setCountB ((prevCount) => prevCount + 1)}>
         Renderizar B
       </button>
-      <p>{countB}</p>
+      <p>{countB}</p> </div> 
+
+   
+   {user && (
+    <div>
+    
+      <p>Dados do usuário</p>
+      <h1>{user.name}</h1>
+      <p> site: <a href={user.blog}>{user.blog}</a>
+      </p>
     </div>
+    )}
   </div>
   );
-  }
+  } 
 
 export default App;
